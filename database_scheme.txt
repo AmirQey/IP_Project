@@ -1,0 +1,51 @@
+# Create Database
+CREATE DATABASE petgrooming;
+
+# Create Table admin
+CREATE TABLE admin (
+    admin_id INT(6) PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(20) NOT NULL,
+    password VARCHAR(20) NOT NULL
+);
+
+# Create Table customer
+
+# Create Table pet 
+
+# Create Table branch
+CREATE TABLE branch (
+    branch_id VARCHAR(4) PRIMARY KEY,
+    branch_name VARCHAR(60) NOT NULL,
+    location VARCHAR(100) NOT NULL
+);
+
+# Insert records to branch table
+INSERT INTO branch (branch_id, branch_name, location) VALUES 
+    ('P01', 'Pet Grooming Bangi', 'Bangi'),
+    ('P02', 'Pet Grooming Shah Alam', 'Shah Alam'),
+    ('P03', 'Pet Grooming Damansara', 'Damansara'),
+    ('P04', 'Pet Grooming Putrajaya', 'Putrajaya'),
+    ('P05', 'Pet Grooming KL', 'Kuala Lumpur');
+
+# Create Table service
+CREATE TABLE service (
+    service_id INT(6) PRIMARY KEY, AUTO_INCREMENT,
+    service_name VARCHAR(50) NOT NULL,
+    description VARCHAR(100) NOT NULL,
+    price DECIMAL(8,2) NOT NULL
+);
+
+# Create Table appoinment
+
+# Create Table feedback
+CREATE TABLE feedback (
+    feedback_id INT(6) PRIMARY KEY AUTO_INCREMENT,
+    appoinment_id INT(6),
+    cust_id INT(6),
+    overall_rating INT(1) NOT NULL,
+    service_rating INT(1) NOT NULL,
+    staff_rating INT(1) NOT NULL,
+    comments VARCHAR(255) NOT NULL,
+    FOREIGN KEY (appoinment_id) REFERENCES appoinment(appoinment_id),
+    FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
+);
